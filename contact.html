@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Career Catalyst - Contact Us</title>
+    <meta
+      name="description"
+      content="Get in touch with the Career Catalyst team for inquiries and feedback."
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Main background: Light Gray by default */
+      main {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f8f9fa;
+        padding: 40px 0;
+        transition: background-color 0.3s ease;
+      }
+
+      /* Card background: White by default */
+      .form-container {
+        width: 100%;
+        max-width: 800px;
+        padding: 30px;
+        background: #ffffff;
+        color: #000000;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .head {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #001f3f;
+      }
+
+      /* =========================
+       DARK MODE RULES
+       ========================= */
+
+      /* 1. Main Background becomes Dark */
+      [data-bs-theme="dark"] main {
+        background-color: #212529 !important;
+      }
+
+      /* 2. Form Card becomes Darker Gray */
+      [data-bs-theme="dark"] .form-container {
+        background-color: #343a40 !important;
+        color: #f8f9fa !important;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+      }
+
+      /* 3. Heading becomes White */
+      [data-bs-theme="dark"] .head {
+        color: #f8f9fa !important;
+      }
+
+      /* 4. Fix Input Fields (Crucial Fix) */
+      [data-bs-theme="dark"] .form-control,
+      [data-bs-theme="dark"] .form-select {
+        background-color: #2b3035; /* Dark background for inputs */
+        border-color: #495057;
+        color: #fff;
+      }
+
+      /* 5. Fix Input Fields for Light Mode (Explicitly set white) */
+      [data-bs-theme="light"] .form-control,
+      [data-bs-theme="light"] .form-select {
+        background-color: #ffffff;
+        border-color: #dee2e6;
+        color: #212529;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg bg-dark border-bottom border-body"
+      data-bs-theme="dark"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Careercatalyst</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">Roadmaps</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="contact.html"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Roadmaps
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Data Engineer</a></li>
+                <li><a class="dropdown-item" href="#">DevOps Engineer</a></li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Software Engineer / Developer</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Artificial Intelligence (AI) / Machine Learning (ML)
+                    Engineer</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    >Cloud Architect / Engineer</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#">Cybersecurity</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+          <button
+            class="btn btn-outline-secondary ms-2"
+            id="darkModeBtn"
+            title="Toggle Dark/Light Mode"
+          >
+            <i class="bi bi-moon-stars-fill"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container d-flex justify-content-center">
+        <div class="form-container">
+          <div class="head">
+            <h2>Contact Us</h2>
+            <p class="text-muted">We'd love to hear from you!</p>
+          </div>
+
+          <form class="row g-3 needs-validation" novalidate>
+            <div class="col-md-6">
+              <label for="validationCustom01" class="form-label"
+                >First name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom01"
+                placeholder="Name"
+                required
+              />
+              <div class="invalid-feedback">
+                Please provide your first name.
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="validationCustom02" class="form-label"
+                >Last name</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom02"
+                placeholder="Surname"
+                required
+              />
+              <div class="invalid-feedback">Please provide your last name.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="contactEmail" class="form-label">Email address</label>
+              <input
+                type="email"
+                class="form-control"
+                id="contactEmail"
+                placeholder="example@gmail.com"
+                required
+              />
+              <div class="invalid-feedback">Please provide a valid email.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="contactNumber" class="form-label">Phone Number</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="contactNumber"
+                placeholder="1234567890"
+              />
+            </div>
+
+            <div class="col-md-6">
+              <label for="validationCustom03" class="form-label">City</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom03"
+                required
+              />
+              <div class="invalid-feedback">Please provide a city.</div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="validationCustom04" class="form-label">State</label>
+              <select class="form-select" id="validationCustom04" required>
+                <option selected disabled value="">Choose...</option>
+                <option>Assam</option>
+                <option>Andhra Pradesh</option>
+                <option>Gujarat</option>
+                <option>Maharashtra</option>
+                <option>Delhi</option>
+                <option>Karnataka</option>
+              </select>
+              <div class="invalid-feedback">Please select a state.</div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="validationCustom05" class="form-label">Zip</label>
+              <input
+                type="text"
+                class="form-control"
+                id="validationCustom05"
+                required
+              />
+              <div class="invalid-feedback">Please provide a zip.</div>
+            </div>
+
+            <div class="col-md-12">
+              <label for="contactMessage" class="form-label">Feedback</label>
+              <textarea
+                class="form-control"
+                id="contactMessage"
+                rows="3"
+                required
+                placeholder="Write your message here..."
+              ></textarea>
+              <div class="invalid-feedback">Please enter a message.</div>
+            </div>
+
+            <div class="col-md-12">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="invalidCheck"
+                  required
+                />
+                <label class="form-check-label" for="invalidCheck"
+                  >Agree to terms and conditions</label
+                >
+                <div class="invalid-feedback">
+                  You must agree before submitting.
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 text-center mt-4">
+              <button class="btn btn-primary px-5" type="submit">
+                Submit Form
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-white pt-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <h5>Career Catalyst</h5>
+            <p>
+              Your trusted guide to career success. Explore roadmaps, read
+              inspiring stories, and grow your skills.
+            </p>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="index.html" class="text-white text-decoration-none"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a href="about.html" class="text-white text-decoration-none"
+                  >Roadmaps</a
+                >
+              </li>
+              <li>
+                <a href="contact.html" class="text-white text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-4 mb-3">
+            <h5>Follow Us</h5>
+            <a href="#" class="text-white me-3"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" class="text-white me-3"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a href="#" class="text-white me-3"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+          </div>
+        </div>
+
+        <hr class="border-light" />
+
+        <div class="text-center pb-3">
+          &copy; 2025 Career Catalyst. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      // 1. Validation Script
+      (() => {
+        "use strict";
+        const forms = document.querySelectorAll(".needs-validation");
+
+        Array.from(forms).forEach((form) => {
+          form.addEventListener(
+            "submit",
+            (event) => {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+
+      // 2. Dark Mode Toggle Script
+      const modeBtn = document.getElementById("darkModeBtn");
+      const htmlElement = document.documentElement;
+
+      if (modeBtn) {
+        modeBtn.addEventListener("click", () => {
+          const currentTheme = htmlElement.getAttribute("data-bs-theme");
+
+          if (currentTheme === "dark") {
+            htmlElement.setAttribute("data-bs-theme", "light");
+            modeBtn.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+          } else {
+            htmlElement.setAttribute("data-bs-theme", "dark");
+            modeBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
