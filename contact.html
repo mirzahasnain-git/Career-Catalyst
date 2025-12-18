@@ -260,12 +260,44 @@
               <label for="validationCustom04" class="form-label">State</label>
               <select class="form-select" id="validationCustom04" required>
                 <option selected disabled value="">Choose...</option>
-                <option>Assam</option>
                 <option>Andhra Pradesh</option>
+                <option>Arunachal Pradesh</option>
+                <option>Assam</option>
+                <option>Bihar</option>
+                <option>Chhattisgarh</option>
+                <option>Goa</option>
                 <option>Gujarat</option>
-                <option>Maharashtra</option>
-                <option>Delhi</option>
+                <option>Haryana</option>
+                <option>Himachal Pradesh</option>
+                <option>Jharkhand</option>
                 <option>Karnataka</option>
+                <option>Kerala</option>
+                <option>Madhya Pradesh</option>
+                <option>Maharashtra</option>
+                <option>Manipur</option>
+                <option>Meghalaya</option>
+                <option>Mizoram</option>
+                <option>Nagaland</option>
+                <option>Odisha</option>
+                <option>Punjab</option>
+                <option>Rajasthan</option>
+                <option>Sikkim</option>
+                <option>Tamil Nadu</option>
+                <option>Telangana</option>
+                <option>Tripura</option>
+                <option>Uttar Pradesh</option>
+                <option>Uttarakhand</option>
+                <option>West Bengal</option>
+
+                <!-- Union Territories -->
+                <option>Andaman and Nicobar Islands</option>
+                <option>Chandigarh</option>
+                <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                <option>Delhi</option>
+                <option>Jammu and Kashmir</option>
+                <option>Ladakh</option>
+                <option>Lakshadweep</option>
+                <option>Puducherry</option>
               </select>
               <div class="invalid-feedback">Please select a state.</div>
             </div>
@@ -381,8 +413,26 @@
       crossorigin="anonymous"
     ></script>
 
-    <script>
-      // 1. Validation Script
+    <script type="module">
+      // 1. Dark Mode Toggle Script
+      const modeBtn = document.getElementById("darkModeBtn");
+      const htmlElement = document.documentElement;
+
+      if (modeBtn) {
+        modeBtn.addEventListener("click", () => {
+          const currentTheme = htmlElement.getAttribute("data-bs-theme");
+
+          if (currentTheme === "dark") {
+            htmlElement.setAttribute("data-bs-theme", "light");
+            modeBtn.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
+          } else {
+            htmlElement.setAttribute("data-bs-theme", "dark");
+            modeBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+          }
+        });
+      }
+
+      // 2. Validation Script
       (() => {
         "use strict";
         const forms = document.querySelectorAll(".needs-validation");
@@ -402,20 +452,82 @@
         });
       })();
 
-      // 2. Dark Mode Toggle Script
-      const modeBtn = document.getElementById("darkModeBtn");
-      const htmlElement = document.documentElement;
+      // 3. Import the functions we need from the SDKs
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-      if (modeBtn) {
-        modeBtn.addEventListener("click", () => {
-          const currentTheme = htmlElement.getAttribute("data-bs-theme");
+      // 4. Your web app's Firebase configuration
+      // PASTE YOUR COPIED CONFIG HERE! (It will look like this)
+      const firebaseConfig = {
+        apiKey: "AIzaSyC5cQcSd34WJDDqd-afuI2yAcjVvLGbSFI",
+        authDomain: "career-catalyst-final.firebaseapp.com",
+        projectId: "career-catalyst-final",
+        storageBucket: "career-catalyst-final.firebasestorage.app",
+        messagingSenderId: "167750596512",
+        appId: "1:167750596512:web:14785152e22716f478d6c5",
+      };
+      // 5. Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
 
-          if (currentTheme === "dark") {
-            htmlElement.setAttribute("data-bs-theme", "light");
-            modeBtn.innerHTML = '<i class="bi bi-moon-stars-fill"></i>';
-          } else {
-            htmlElement.setAttribute("data-bs-theme", "dark");
-            modeBtn.innerHTML = '<i class="bi bi-sun-fill"></i>';
+      // 6. Form Logic (Validation + Sending Data)
+      const contactForm = document.querySelector(".needs-validation");
+
+      if (contactForm) {
+        contactForm.addEventListener("submit", async function (event) {
+          event.preventDefault(); // Stop the page from reloading
+          event.stopPropagation();
+
+          // A. Check if form is valid (Bootstrap Validation)
+          if (!contactForm.checkValidity()) {
+            contactForm.classList.add("was-validated");
+            return; // Stop if there are errors
+          }
+
+          // B. If valid, get the data from the inputs
+          const firstName = document.getElementById("validationCustom01").value;
+          const lastName = document.getElementById("validationCustom02").value;
+          const email = document.getElementById("contactEmail").value;
+          const phone = document.getElementById("contactNumber").value;
+          const city = document.getElementById("validationCustom03").value;
+          const state = document.getElementById("validationCustom04").value;
+          const message = document.getElementById("contactMessage").value;
+
+          // Change button text to show loading
+          const submitBtn = contactForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerText;
+          submitBtn.innerText = "Sending...";
+          submitBtn.disabled = true;
+
+          try {
+            // C. Send data to Firebase
+            // We create a "collection" named 'contacts'
+            await addDoc(collection(db, "contacts"), {
+              first_name: firstName,
+              last_name: lastName,
+              email: email,
+              phone: phone,
+              city: city,
+              state: state,
+              message: message,
+              timestamp: new Date(), // Saves the time of submission
+            });
+
+            // D. Success!
+            alert("Message Sent Successfully!");
+            contactForm.reset(); // Clear the form
+            contactForm.classList.remove("was-validated");
+          } catch (e) {
+            console.error("Error adding document: ", e);
+            alert("Error sending message. Please try again.");
+          } finally {
+            // Reset button
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
           }
         });
       }
